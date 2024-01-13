@@ -1,4 +1,3 @@
-// Ejemplo: Pedir número mediante prompt y calcular el total de la compra
 let cantidadProductos = parseInt(prompt("¿Cuántos productos compraste?"));
 let totalCompra = 0;
 
@@ -13,7 +12,7 @@ let textoConcatenado = "";
 let entradaTexto;
 
 while (entradaTexto !== "ESC") {
-    entradaTexto = prompt("Ingrese un texto ('ESC' para salir):");
+    entradaTexto = prompt("Ingrese un texto el cual se ira conectando con el anterior ('ESC' para salir):");
     textoConcatenado += entradaTexto + " ";
     alert("Texto acumulado: " + textoConcatenado);
 }
