@@ -1,48 +1,54 @@
-function calcularTotalCompra(cantidadProductos) {
-    let totalCompra = 0;
+function calcularPrecioConDescuento() {
+    const precioProducto = obtenerPrecio("precioProducto");
+    const porcentajeDescuento = obtenerPorcentajeDescuento("porcentajeDescuento");
 
-    for (let i = 1; i <= cantidadProductos; i++) {
-        let precioProducto = parseFloat(prompt("Ingrese el precio del producto #" + i));
-        totalCompra += precioProducto;
-    }
+    const precioConDescuento = calcularPrecioDescuento(precioProducto, porcentajeDescuento);
 
-    return totalCompra.toFixed(2);
+    mostrarResultado(precioConDescuento);
 }
 
-function concatenarTexto() {
-    let textoConcatenado = "";
-    let entradaTexto;
-
-    while (entradaTexto !== "ESC") {
-        entradaTexto = prompt("Ingrese un texto el cual se irá conectando con el anterior ('ESC' para salir):");
-        if (entradaTexto !== "ESC") {
-            textoConcatenado += entradaTexto + " ";
-            alert("Texto acumulado: " + textoConcatenado);
-        }
-    }
+function obtenerPrecio(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
 }
 
-function repetirSaludo(vecesHola) {
-    for (let i = 0; i < vecesHola; i++) {
-        alert("Hola");
-    }
+function obtenerPorcentajeDescuento(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
 }
 
-let cantidadProductos = parseInt(prompt("¿Cuántos productos compraste?"));
-
-if (!isNaN(cantidadProductos)) {
-    let totalCompra = calcularTotalCompra(cantidadProductos);
-    alert("Total de la compra: $" + totalCompra);
-} else {
-    alert("Por favor, ingresa un número válido para la cantidad de productos.");
+function calcularPrecioDescuento(precioProducto, porcentajeDescuento) {
+    const descuento = precioProducto * (porcentajeDescuento / 100);
+    const precioConDescuento = precioProducto - descuento;
+    return precioConDescuento;
 }
 
-concatenarTexto();
+function mostrarResultado(precioConDescuento) {
+    const resultadoElement = document.getElementById('resultado');
+    resultadoElement.textContent = `El precio con descuento es: $${precioConDescuento.toFixed(2)}`;
+}
+function calcularPrecioConDescuento() {
+    const precioProducto = obtenerPrecio("precioProducto");
+    const porcentajeDescuento = obtenerPorcentajeDescuento("porcentajeDescuento");
 
-let vecesHola = parseInt(prompt("¿Cuántas veces quieres que se repita el mensaje 'Hola'?"));
+    const precioConDescuento = calcularPrecioDescuento(precioProducto, porcentajeDescuento);
 
-if (!isNaN(vecesHola)) {
-    repetirSaludo(vecesHola);
-} else {
-    alert("Por favor, ingresa un número válido para la cantidad de repeticiones de 'Hola'.");
+    mostrarResultado(precioConDescuento);
+}
+
+function obtenerPrecio(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+}
+
+function obtenerPorcentajeDescuento(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+}
+
+function calcularPrecioDescuento(precioProducto, porcentajeDescuento) {
+    const descuento = precioProducto * (porcentajeDescuento / 100);
+    const precioConDescuento = precioProducto - descuento;
+    return precioConDescuento;
+}
+
+function mostrarResultado(precioConDescuento) {
+    const resultadoElement = document.getElementById('resultado');
+    resultadoElement.textContent = `El precio con descuento es: $${precioConDescuento.toFixed(2)}`;
 }
